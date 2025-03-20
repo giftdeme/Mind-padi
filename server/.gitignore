@@ -1,0 +1,8 @@
+.ruff_cache
+mypy_cache
+__pycache__
+.env
+alembic/versions/*
+.DS_Store
+.cursor
+.cursorignore

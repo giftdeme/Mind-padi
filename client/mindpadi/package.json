@@ -1,0 +1,32 @@
+{
+	"name": "mindpadi-waitlist",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"fmt": "biome format",
+		"check": "biome check",
+		"fix": "biome check --fix"
+	},
+	"dependencies": {
+		"formik": "^2.4.6",
+		"next": "15.1.7",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-hot-toast": "2.5.2",
+		"react-icons": "^5.5.0",
+		"yup": "^1.6.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@tailwindcss/postcss": "^4.0.6",
+		"@types/node": "^22",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"postcss": "^8.5.2",
+		"tailwindcss": "^4.0.6",
+		"typescript": "^5"
+	}
+}

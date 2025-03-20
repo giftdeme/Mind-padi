@@ -1,0 +1,5 @@
+.ruff_cache
+.idea
+.env
+__pycache__
+.trunk
