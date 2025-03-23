@@ -40,7 +40,7 @@ export default function DashboardLayout({ children, setSelected, selected }: Lay
         />
         <IoNotificationsOutline 
           className={`text-2xl cursor-pointer ${selected === 'message' ? 'opacity-75' : 'opacity-100'}`} 
-          onClick={() => setSelected('messgae')} 
+          onClick={() => setSelected('message')} 
         />
       </aside>
 
