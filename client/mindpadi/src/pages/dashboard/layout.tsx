@@ -7,7 +7,7 @@ import { BsBarChartLine } from "react-icons/bs";
 import { LuUserRound } from "react-icons/lu";
 import { IoNotificationsOutline } from "react-icons/io5";
 import Image from "next/image";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/dashboard/Frame 713.png";
 import { ReactNode } from "react";
 
 
