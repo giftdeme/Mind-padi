@@ -1,0 +1,6 @@
+<svg width="30" height="30" fill="none">
+    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+        d="M15 27.5c6.904 0 12.5-5.596 12.5-12.5S21.904 2.5 15 2.5 2.5 8.096 2.5 15 8.096 27.5 15 27.5" />
+    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+        d="M10 17.5s1.875 2.5 5 2.5 5-2.5 5-2.5m-8.75-6.25h.012m7.488 0h.012" />
+</svg>

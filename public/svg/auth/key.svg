@@ -1,0 +1,6 @@
+<svg width="66" height="66" fill="none">
+    <rect width="56" height="56" x="5" y="5" fill="#DFFDC9" rx="28" />
+    <rect width="56" height="56" x="5" y="5" stroke="#F7FFF1" stroke-width="10" rx="28" />
+    <path stroke="#204603" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.333"
+        d="m21.333 43.5 2.333-2.333m0 0 3.5 3.5 4.084-4.084-3.5-3.5m-4.084 4.084 4.084-4.084m4.795-4.795a6.417 6.417 0 1 0 9.074-9.074 6.417 6.417 0 0 0-9.073 9.073zm0 0-4.795 4.795" />
+</svg>
