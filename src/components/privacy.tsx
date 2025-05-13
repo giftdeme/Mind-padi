@@ -3,7 +3,7 @@ import Lock from "@/svg/lock.svg";
 export default function Privacy() {
     return (
         <section className="mb-12 px-4 md:mb-20">
-            <div className="flex max-w-screen-xl flex-col items-center rounded-[48px] bg-[#F9F1ED] p-6 text-center shadow-sm md:mx-auto">
+            <div className="flex max-w-screen-sm flex-col items-center rounded-[48px] bg-[#F9F1ED] p-6 text-center shadow-sm md:mx-auto">
                 <Lock />
                 <h2 className="mt-4 font-semibold text-xl md:text-3xl">
                     Your privacy is our

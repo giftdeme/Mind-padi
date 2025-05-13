@@ -89,8 +89,8 @@ export default function HowItWorks() {
                     />
                     <Image
                         src={Overlay}
-                        width={420}
-                        height={439}
+                        width={672}
+                        height={703}
                         className="pointer-events-none select-none md:hidden"
                         priority
                         quality={100}

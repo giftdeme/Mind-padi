@@ -1,3 +1,4 @@
+'use client';
 import ChatBubbleOne from "@/png/hero/chat_bubble_1.png";
 import ChatBubbleTwo from "@/png/hero/chat_bubble_2.png";
 import ChatBubbleThree from "@/png/hero/chat_bubble_3.png";
@@ -30,8 +31,9 @@ export default function Hero() {
                 </p>
                 <Button
                     size={"lg"}
-                    className="w-44 rounded-2xl"
+                    className="w-44 rounded-2xl "
                     aria-label="Start Chat"
+
                 >
                     Start Chat &rarr;
                 </Button>
@@ -39,6 +41,10 @@ export default function Hero() {
 
             {/* Desktop */}
             <div className="relative hidden flex-col lg:flex">
+            <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 3, duration: 0.1 }} >
                 <Image
                     src={Overlay}
                     width={914}
@@ -49,24 +55,30 @@ export default function Hero() {
                     alt="Overlay"
                 />
 
-               {/* Chat Bubble 1 */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 3, duration: 0.5 }}
-  className="absolute right-[10%] bottom-[28%] transform cursor-pointer"
->
-  <Image
-    src={ChatBubbleOne}
-    width={334}
-    height={39}
-    className="pointer-events-none h-auto w-auto select-none"
-    priority
-    quality={100}
-    alt="Chat Bubble One"
-  />
-</motion.div>
-                <div className="absolute right-[2%] bottom-[12.5%] transform cursor-pointer transition-transform hover:scale-105">
+                </motion.div>
+
+
+                {/* Chat Bubble 1 */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 0.5 }}
+                    className="absolute right-[10%] bottom-[28%] transform cursor-pointer"
+                >
+                    <Image
+                        src={ChatBubbleOne}
+                        width={334}
+                        height={39}
+                        className="pointer-events-none h-auto w-auto select-none"
+                        priority
+                        quality={100}
+                        alt="Chat Bubble One"
+                    />
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 0.8 }} className="absolute right-[2%] bottom-[12.5%] transform cursor-pointer transition-transform hover:scale-105">
                     <Image
                         src={ChatBubbleTwo}
                         width={334}
@@ -76,9 +88,12 @@ export default function Hero() {
                         quality={100}
                         alt="Chat Bubble Two"
                     />
-                </div>
+                </motion.div>
 
-                <div className="absolute right-[20%] bottom-4 transform cursor-pointer transition-transform hover:scale-105">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-[20%] bottom-4 transform cursor-pointer transition-transform hover:scale-105">
                     <Image
                         src={ChatBubbleThree}
                         width={241}
@@ -88,9 +103,12 @@ export default function Hero() {
                         quality={100}
                         alt="Chat Bubble Three"
                     />
-                </div>
+                </motion.div>
 
-                <div className="absolute bottom-[10%] left-[-12.5%] transform cursor-pointer transition-transform hover:scale-105">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 1.3 }} className="absolute bottom-[10%] left-[-12.5%] transform cursor-pointer transition-transform hover:scale-105">
                     <Image
                         src={ChatBubbleFour}
                         width={201}
@@ -100,7 +118,7 @@ export default function Hero() {
                         quality={100}
                         alt="Chat Bubble Four"
                     />
-                </div>
+                </motion.div>
 
                 <Tick className="-right-16 -bottom-10 absolute" />
                 <Love className="absolute top-11 left-[-9.09%] hidden translate-x-[-9.09%] lg:block" />
@@ -108,17 +126,25 @@ export default function Hero() {
 
             {/* Mobile */}
             <div className="relative flex w-[94dvw] flex-col place-self-start lg:hidden">
-                <Image
-                    src={OverlaySmall}
-                    width={472}
-                    height={364}
-                    className="pointer-events-none h-full w-full select-none"
-                    priority
-                    quality={100}
-                    alt="Overlay Small"
-                />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 1.1 }} >
+                    <Image
+                        src={OverlaySmall}
+                        width={472}
+                        height={364}
+                        className="pointer-events-none h-full w-full select-none"
+                        priority
+                        quality={100}
+                        alt="Overlay Small"
+                    />
+                </motion.div>
 
-                <div className="absolute right-[8.33%] bottom-[28%]">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-[8.33%] bottom-[28%]">
                     <Image
                         src={ChatBubbleOne}
                         width={172}
@@ -128,9 +154,12 @@ export default function Hero() {
                         quality={100}
                         alt="Chat Bubble One"
                     />
-                </div>
+                </motion.div>
 
-                <div className="absolute right-0 bottom-[16.67%]">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-0 bottom-[16.67%]">
                     <Image
                         src={ChatBubbleTwo}
                         width={172}
@@ -140,18 +169,10 @@ export default function Hero() {
                         quality={100}
                         alt="Chat Bubble Two"
                     />
-                </div>
+                </motion.div>
 
                 <div className="absolute right-[24%] bottom-4">
-                    <Image
-                        src={ChatBubbleThree}
-                        width={116}
-                        height={28}
-                        className="pointer-events-none h-auto w-auto select-none"
-                        priority
-                        quality={100}
-                        alt="Chat Bubble Three"
-                    />
+
                 </div>
 
                 <TickSmall className="absolute right-0 bottom-0 translate-x-6 translate-y-6" />
