@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./button";
+import CustomButton from "./customButton";
 
 const NAVLINKS = [
     { name: "Home", href: "#" },
@@ -20,90 +21,88 @@ const NAVLINKS = [
 export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const router = useRouter();
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        setIsActive(true); // Set the button as active
+        router.push("/"); // Navigate to the root page
+    };
 
     return (
         <nav className="sticky top-0 z-50 mx-1 max-w-5xl rounded-3xl bg-[#F4F4F4] px-4 py-4 shadow-xs lg:mx-auto">
-            <div className="flex justify-between  w-full">
-            <div className="flex items-center w-full justify-between  gap-20">
-                {/* Left: Logo */}
-                <Link href="/" aria-label="Home" className="flex-shrink-0">
-                    <Logo />
-                </Link>
+            <div className="flex w-full justify-between">
+                <div className="flex w-full items-center justify-between gap-20">
+                    {/* Left: Logo */}
+                    <Link href="/" aria-label="Home" className="flex-shrink-0">
+                        <Logo />
+                    </Link>
 
-                {/* Center: Nav Links */}
-                <ul className="hidden lg:flex lg:space-x-4">
-                    {NAVLINKS.map((link) => (
-                        <li key={link.name}>
-                            <Link
-                                href={link.href}
-                                className="transition-colors hover:text-primary/90"
-                            >
-                                {link.name}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                    {/* Center: Nav Links */}
+                    <ul className="hidden lg:flex lg:space-x-4">
+                        {NAVLINKS.map((link) => (
+                            <li key={link.name}>
+                                <Link
+                                    href={link.href}
+                                    className="transition-colors hover:text-primary/90"
+                                >
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
 
-                {/* Right: Button */}
-                <div className="hidden lg:block flex-shrink-0 ml-4">
-                    <Button
-                        className="rounded-3xl"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            router.push("/");
-                        }}
-                        aria-label="Start Chat"
+                    {/* Right: Button */}
+                    <div className="ml-4 hidden flex-shrink-0 lg:block">
+                        <CustomButton
+                            isActive={isActive}
+                            onClick={handleClick} // Pass the handleClick function here
+                            ariaLabel="Start Chat &rarr;"
+                            className="custom-class"
+                        />
+                    </div>
+
+                    {/* Mobile: Hamburger */}
+                    <button
+                        type="button"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="lg:hidden"
+                        aria-label="Toggle Menu"
                     >
-                        Start Chat &rarr;
-                    </Button>
+                        {menuOpen ? <Close /> : <Menu />}
+                    </button>
                 </div>
 
-                {/* Mobile: Hamburger */}
-                <button
-                    type="button"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="lg:hidden"
-                    aria-label="Toggle Menu"
+                {/* Mobile Menu */}
+                <div
+                    className={`${menuOpen ? "block" : "hidden"} mt-4 lg:hidden`}
                 >
-                    {menuOpen ? <Close /> : <Menu />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            <div className={`${menuOpen ? "block" : "hidden"} mt-4 lg:hidden`}>
-                <ul className="flex flex-col space-y-6">
-                    {NAVLINKS.map((link) => (
-                        <li key={link.name}>
-                            <Button
-                                asChild
-                                variant={"link"}
-                                onClick={() => setMenuOpen(false)}
-                                className="block p-0 text-foreground hover:no-underline"
-                                size={"sm"}
-                                aria-label={link.name}
-                            >
-                                <Link href={link.href}>{link.name}</Link>
-                            </Button>
+                    <ul className="flex flex-col space-y-6">
+                        {NAVLINKS.map((link) => (
+                            <li key={link.name}>
+                                <Button
+                                    asChild
+                                    variant={"link"}
+                                    onClick={() => setMenuOpen(false)}
+                                    className="block p-0 text-foreground hover:no-underline"
+                                    size={"sm"}
+                                    aria-label={link.name}
+                                >
+                                    <Link href={link.href}>{link.name}</Link>
+                                </Button>
+                            </li>
+                        ))}
+                        <li>
+                            <CustomButton
+                                isActive={isActive}
+                                onClick={handleClick} // Pass the handleClick function here
+                                ariaLabel="Start Chat &rarr;"
+                                className="custom-class"
+                            />
                         </li>
-                    ))}
-                    <li>
-                        <Button
-                            className="block rounded-3xl"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                router.push("/");
-                            }}
-                            aria-label="Start Chat"
-                        >
-                            Start Chat &rarr;
-                        </Button>
-                    </li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
             </div>
         </nav>
-
-
-
     );
 }

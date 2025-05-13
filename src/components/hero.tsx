@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import ChatBubbleOne from "@/png/hero/chat_bubble_1.png";
 import ChatBubbleTwo from "@/png/hero/chat_bubble_2.png";
 import ChatBubbleThree from "@/png/hero/chat_bubble_3.png";
@@ -8,11 +8,20 @@ import OverlaySmall from "@/png/hero/overlay_small.png";
 import Love from "@/svg/hero/love.svg";
 import Tick from "@/svg/hero/tick.svg";
 import TickSmall from "@/svg/hero/tick_small.svg";
-import Image from "next/image";
-import { Button } from "./button";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Router from "next/router";
+import { useState } from "react";
+import CustomButton from "./customButton";
 
 export default function Hero() {
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        setIsActive(true); // Set the button as active
+        Router.push("/"); // Navigate to the root page
+    };
     return (
         <section className="relative mx-auto flex min-h-dvh max-w-screen-xl flex-col items-center justify-center overflow-hidden py-12 lg:py-24">
             <div className="mx-auto mb-12 max-w-3xl px-2 text-center sm:px-0">
@@ -29,22 +38,26 @@ export default function Hero() {
                     anytime to reduce stress and build resilience with your
                     personal mental wellness partner
                 </p>
-                <Button
+                <CustomButton
+                    isActive={isActive}
+                    onClick={handleClick} // Pass the handleClick function here
+                    ariaLabel="Start Chat &rarr;"
                     size={"lg"}
-                    className="w-44 rounded-2xl "
-                    aria-label="Start Chat"
-
-                >
-                    Start Chat &rarr;
-                </Button>
+                    className="custom-class"
+                />
             </div>
 
             {/* Desktop */}
-            <div className="relative hidden flex-col lg:flex">
             <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 3, duration: 0.1 }} >
+                animate={{ y: [0, -10, 0, 10, 0] }} // up -> center -> down -> center
+                transition={{
+                    duration: 3,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                }}
+                className="relative hidden flex-col lg:flex"
+            >
                 <Image
                     src={Overlay}
                     width={914}
@@ -54,9 +67,6 @@ export default function Hero() {
                     quality={100}
                     alt="Overlay"
                 />
-
-                </motion.div>
-
 
                 {/* Chat Bubble 1 */}
                 <motion.div
@@ -78,7 +88,9 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 0.8 }} className="absolute right-[2%] bottom-[12.5%] transform cursor-pointer transition-transform hover:scale-105">
+                    transition={{ delay: 3, duration: 0.8 }}
+                    className="absolute right-[2%] bottom-[12.5%] transform cursor-pointer transition-transform hover:scale-105"
+                >
                     <Image
                         src={ChatBubbleTwo}
                         width={334}
@@ -93,7 +105,9 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-[20%] bottom-4 transform cursor-pointer transition-transform hover:scale-105">
+                    transition={{ delay: 3, duration: 1.1 }}
+                    className="absolute right-[20%] bottom-4 transform cursor-pointer transition-transform hover:scale-105"
+                >
                     <Image
                         src={ChatBubbleThree}
                         width={241}
@@ -108,7 +122,9 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 1.3 }} className="absolute bottom-[10%] left-[-12.5%] transform cursor-pointer transition-transform hover:scale-105">
+                    transition={{ delay: 3, duration: 1.3 }}
+                    className="absolute bottom-[10%] left-[-12.5%] transform cursor-pointer transition-transform hover:scale-105"
+                >
                     <Image
                         src={ChatBubbleFour}
                         width={201}
@@ -122,14 +138,24 @@ export default function Hero() {
 
                 <Tick className="-right-16 -bottom-10 absolute" />
                 <Love className="absolute top-11 left-[-9.09%] hidden translate-x-[-9.09%] lg:block" />
-            </div>
+            </motion.div>
 
             {/* Mobile */}
-            <div className="relative flex w-[94dvw] flex-col place-self-start lg:hidden">
+            <motion.div
+                animate={{ y: [0, -10, 0, 10, 0] }} // up -> center -> down -> center
+                transition={{
+                    duration: 3,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                }}
+                className="relative flex w-[94dvw] flex-col place-self-start lg:hidden"
+            >
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 1.1 }} >
+                    transition={{ delay: 3, duration: 1.1 }}
+                >
                     <Image
                         src={OverlaySmall}
                         width={472}
@@ -144,7 +170,9 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-[8.33%] bottom-[28%]">
+                    transition={{ delay: 3, duration: 1.1 }}
+                    className="absolute right-[8.33%] bottom-[28%]"
+                >
                     <Image
                         src={ChatBubbleOne}
                         width={172}
@@ -159,7 +187,9 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3, duration: 1.1 }} className="absolute right-0 bottom-[16.67%]">
+                    transition={{ delay: 3, duration: 1.1 }}
+                    className="absolute right-0 bottom-[16.67%]"
+                >
                     <Image
                         src={ChatBubbleTwo}
                         width={172}
@@ -171,12 +201,10 @@ export default function Hero() {
                     />
                 </motion.div>
 
-                <div className="absolute right-[24%] bottom-4">
-
-                </div>
+                <div className="absolute right-[24%] bottom-4" />
 
                 <TickSmall className="absolute right-0 bottom-0 translate-x-6 translate-y-6" />
-            </div>
+            </motion.div>
         </section>
     );
 }

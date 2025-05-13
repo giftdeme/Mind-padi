@@ -64,7 +64,7 @@ export default function Testimonial() {
             onTouchEnd={handleTouchEnd}
         >
             <div className="relative mx-auto max-w-screen-xl px-4 py-12 text-white md:px-20 md:py-24">
-                <div className="flex flex-col items-center justify-between gap-12 md:flex-row">
+                <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
                     <div className="space-y-8 md:max-w-lg">
                         <Quote />
                         <Rating />

@@ -1,9 +1,13 @@
+"use client";
 import Overlay from "@/png/how-it-works/overlay.png";
 import CheckMark from "@/svg/how-it-works/check_mark.svg";
 import Image from "next/image";
-import { Button } from "./button";
+import { useState } from "react";
+import CustomButton from "./customButton";
 
 export default function HowItWorks() {
+    const [isActive, setIsActive] = useState<boolean>(false);
+
     return (
         <section className="px-4 py-12 lg:py-24" id="how-it-works">
             <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between lg:flex-row">
@@ -69,12 +73,20 @@ export default function HowItWorks() {
                         </li>
                     </ul>
 
-                    <Button
+                    {/* <Button
                         className="mt-8 h-12 w-32 rounded-3xl"
                         aria-label="Start Chat"
                     >
                         Start Chat &rarr;
-                    </Button>
+                    </Button> */}
+
+                    <CustomButton
+                        isActive={isActive}
+                        // onClick={handleClick}  // Pass the handleClick function here
+                        ariaLabel="Start Chat &rarr;"
+                        size={"lg"}
+                        className="mt-8 h-12 w-32 rounded-3xl"
+                    />
                 </div>
 
                 <div className="mt-12 lg:mt-6">
@@ -89,8 +101,8 @@ export default function HowItWorks() {
                     />
                     <Image
                         src={Overlay}
-                        width={672}
-                        height={703}
+                        width={420}
+                        height={439}
                         className="pointer-events-none select-none md:hidden"
                         priority
                         quality={100}

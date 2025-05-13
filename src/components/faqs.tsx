@@ -3,7 +3,7 @@
 import ChevronDown from "@/svg/faqs/chevron_down.svg";
 import ChevronUp from "@/svg/faqs/chevron_up.svg";
 import { useState } from "react";
-import { Button } from "./button";
+import CustomButton from "./customButton";
 
 const FAQS = [
     {
@@ -30,6 +30,7 @@ const FAQS = [
 
 export default function FAQs() {
     const [openIndex, setOpenIndex] = useState(0);
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     const toggle = (index: number) => {
         setOpenIndex(openIndex === index ? -1 : index);
@@ -79,9 +80,16 @@ export default function FAQs() {
                 })}
             </div>
 
-            <Button className="mt-12 rounded-full" aria-label="See all FAQs">
+            {/* <Button className="mt-12 rounded-full" aria-label="See all FAQs">
                 See all FAQ's &rarr;
-            </Button>
+            </Button> */}
+
+            <CustomButton
+                isActive={isActive}
+                // onClick={handleClick}  // Pass the handleClick function here
+                className="mt-12 rounded-full"
+                ariaLabel="See all FAQs &rarr;"
+            />
         </section>
     );
 }
